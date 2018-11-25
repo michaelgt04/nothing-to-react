@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import './layout.css'
+import Navbar from "./navbar"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -29,20 +30,31 @@ const Layout = ({ children }) => (
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
+        <LayoutWrapper>
+          <NavbarWrapper>
+            <Navbar />
+          </NavbarWrapper>
+          <ContentWrapper>
+            {children}
+          </ContentWrapper>
+        </LayoutWrapper>
       </>
     )}
   />
 )
+
+const ContentWrapper = styled.div`
+  max-width: 1080px;
+  margin-left: 5rem;
+`
+
+const LayoutWrapper = styled.div`
+  display: flex;
+`
+
+const NavbarWrapper = styled.div`
+  width: 250px;
+`;
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
