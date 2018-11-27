@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 
 const Navbar = ({ data }) => {
@@ -21,19 +22,33 @@ const Navbar = ({ data }) => {
         console.log(pageObject)
 
         const sections = Object.values(pageObject).map(section => {
-          return <h4>{section[0].node.frontmatter.section}</h4>
+          return(
+            <SectionHeaderWrapper>
+              <span>{section[0].node.frontmatter.section}</span>
+            </SectionHeaderWrapper>
+          )
         })
 
         return(
-          <div>
+          <NavWrapper>
             {sections}
-          </div>
+          </NavWrapper>
         )
       }}
     >
     </StaticQuery>
   )
 }
+
+const NavWrapper = styled.div`
+  background-color: rgba(59, 69, 78, .05);
+  border-right: 1px solid rgb(230, 236, 241);
+  padding: 2rem;
+`;
+
+const SectionHeaderWrapper = styled.div`
+  padding: .5rem 1rem;
+`;
 
 export const query = graphql`
 {
