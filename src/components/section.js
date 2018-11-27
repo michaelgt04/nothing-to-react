@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Section = props => {
-  const { sectionInfo } = props;
+  const { handleClick, sectionInfo, selected } = props;
+  console.log(selected)
 
   const sectionHeader = 
     sectionInfo[0] &&
@@ -10,9 +11,14 @@ const Section = props => {
     sectionInfo[0].node.frontmatter &&
     sectionInfo[0].node.frontmatter.section
   
+  const lessons = sectionInfo.map(lesson => {
+    return <span>{lesson.node.frontmatter.title}</span>
+  })
+
   return (
-    <SectionWrapper>
+    <SectionWrapper onClick={handleClick}>
       <span>{sectionHeader || "{Default Header}"}</span>
+      {selected && <div>{lessons}</div>}
     </SectionWrapper>
   )
 }

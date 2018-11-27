@@ -1,43 +1,69 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import Section from './section'
 
-const Navbar = ({ data }) => {
-  return (
-    <StaticQuery
-      query={query}
-      render={data => {
-        const pages = 
-          data &&
-          data.allMarkdownRemark &&
-          data.allMarkdownRemark.edges
-        const pageObject = {};
-        pages.forEach(page => {
-          if (pageObject[page.node.frontmatter.sectionOrder]){
-            pageObject[page.node.frontmatter.sectionOrder].push(page)
-          } else {
-            pageObject[page.node.frontmatter.sectionOrder] = [page]
-          }
-        })
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedSection: null
+    }
+  }
 
-        const sections = Object.values(pageObject).map(section => {
+  selectSection = sectionIndex => {
+    const { selectedSection } = this.state;
+    
+    if (selectedSection === sectionIndex) {
+      this.setState({ selectedSection: null })
+    } else {
+      this.setState({ selectedSection: sectionIndex })
+    }
+  }
+
+  render() {
+    const { selectedSection } = this.state;
+
+    return (
+      <StaticQuery
+        query={query}
+        render={data => {
+          const pages = 
+            data &&
+            data.allMarkdownRemark &&
+            data.allMarkdownRemark.edges
+          const pageObject = {};
+          pages.forEach(page => {
+            if (pageObject[page.node.frontmatter.sectionOrder]){
+              pageObject[page.node.frontmatter.sectionOrder].push(page)
+            } else {
+              pageObject[page.node.frontmatter.sectionOrder] = [page]
+            }
+          })
+
+          const sections = Object.values(pageObject).map((section, index)=> {
+            const selected = index === selectedSection
+            const handleClick = () => this.selectSection(index)
+
+            return(
+              <Section
+                key={index}
+                handleClick={handleClick}
+                sectionInfo={section}
+                selected={selected}
+              />
+            )
+          })
+
           return(
-            <Section
-              sectionInfo={section}
-            />
+            <NavWrapper>
+              {sections}
+            </NavWrapper>
           )
-        })
-
-        return(
-          <NavWrapper>
-            {sections}
-          </NavWrapper>
-        )
-      }}
-    >
-    </StaticQuery>
-  )
+        }}
+      />
+    )
+  }
 }
 
 const NavWrapper = styled.div`
