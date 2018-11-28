@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 const Section = props => {
   const { handleClick, sectionInfo, selected } = props;
-  console.log(selected)
 
   const sectionHeader = 
     sectionInfo[0] &&
