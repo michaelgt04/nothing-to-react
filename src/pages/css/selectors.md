@@ -1,7 +1,7 @@
 ---
 order: 1
 sectionOrder: 2
-section: "css"
+section: "CSS"
 slug: "css"
 title: "Selectors"
 ---

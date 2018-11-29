@@ -1,7 +1,7 @@
 ---
 order: 1
 sectionOrder: 1
-section: "html"
+section: "HTML"
 slug: "document"
 title: "Document"
 ---

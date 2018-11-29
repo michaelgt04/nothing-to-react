@@ -1,21 +1,20 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 
 const LessonTemplate = props => {
   const { data } = props;
 
-  console.log(data)
   const lesson = data.markdownRemark.html
 
   return (
-    <Layout>
+    <div>
       <h1>Hoi this is template</h1>
       <div
         dangerouslySetInnerHTML={{ __html: lesson}}
       />
-    </Layout>
+    </div>
   )
 }
 

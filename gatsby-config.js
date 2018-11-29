@@ -17,6 +17,12 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography.js'
       }
     },
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve('./src/components/layout.js')
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-transformer-remark',

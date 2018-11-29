@@ -83,6 +83,7 @@ export const query = graphql`
           order
           section
           sectionOrder
+          slug
         }
         html
       }
