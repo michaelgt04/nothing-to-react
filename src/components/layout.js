@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import Navbar from "./navbar"
+import Navbar from './navbar'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -34,9 +34,7 @@ const Layout = ({ children }) => (
           <NavbarWrapper>
             <Navbar />
           </NavbarWrapper>
-          <ContentWrapper>
-            {children}
-          </ContentWrapper>
+          <ContentWrapper>{children}</ContentWrapper>
         </LayoutWrapper>
       </>
     )}
@@ -54,7 +52,7 @@ const LayoutWrapper = styled.div`
 
 const NavbarWrapper = styled.div`
   width: 250px;
-`;
+`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
