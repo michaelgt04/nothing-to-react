@@ -19,7 +19,7 @@ const Section = props => {
 
   return (
     <SectionWrapper>
-      <span onClick={handleClick}>{sectionHeader || '{Default Header}'}</span>
+      <h5 onClick={handleClick}>{sectionHeader || '{Default Header}'}</h5>
       {selected && <div>{lessons}</div>}
     </SectionWrapper>
   )
