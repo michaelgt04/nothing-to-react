@@ -4,9 +4,7 @@ import styled from 'styled-components'
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <ContentWrapper>
-      <h3 className="site-title">
-        {siteTitle}
-      </h3>
+      <h3 className="site-title">{siteTitle}</h3>
     </ContentWrapper>
   </HeaderWrapper>
 )
@@ -17,7 +15,7 @@ const HeaderWrapper = styled.div`
   box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
 
   .site-title {
-    margin: 0
+    margin: 0;
   }
 `
 

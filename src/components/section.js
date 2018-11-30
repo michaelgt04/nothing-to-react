@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const Section = props => {
-  const { handleClick, sectionInfo, selected } = props;
+  const { handleClick, sectionInfo, selected } = props
 
-  const sectionHeader = 
+  const sectionHeader =
     sectionInfo[0] &&
     sectionInfo[0].node &&
     sectionInfo[0].node.frontmatter &&
     sectionInfo[0].node.frontmatter.section
-  
+
   const lessons = sectionInfo.map(lesson => {
     const frontmatter = lesson.node.frontmatter
 
@@ -19,14 +19,14 @@ const Section = props => {
 
   return (
     <SectionWrapper>
-      <span onClick={handleClick}>{sectionHeader || "{Default Header}"}</span>
+      <span onClick={handleClick}>{sectionHeader || '{Default Header}'}</span>
       {selected && <div>{lessons}</div>}
     </SectionWrapper>
   )
 }
 
 const SectionWrapper = styled.div`
-  padding: .5rem 1rem;
-`;
+  padding: 0.5rem 1rem;
+`
 
-export default Section;
+export default Section
