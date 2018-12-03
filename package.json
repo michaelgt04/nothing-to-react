@@ -22,7 +22,9 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
+    "react-transition-group": "^2.5.0",
     "react-typography": "^0.16.13",
+    "stickybits": "^3.5.8",
     "styled-components": "^4.1.1",
     "typography": "^0.16.17",
     "typography-theme-ocean-beach": "^0.15.11"

@@ -20,7 +20,7 @@ const ContentWrapper = styled.div`
   margin: auto;
   max-width: 500px;
 
-  @media(min-width: 800px) {
+  @media (min-width: 800px) {
     max-width: 740px;
   }
 `

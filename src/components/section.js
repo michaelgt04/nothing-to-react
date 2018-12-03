@@ -19,14 +19,17 @@ const Section = props => {
 
   return (
     <SectionWrapper>
-      <h5 onClick={handleClick}>{sectionHeader || '{Default Header}'}</h5>
+      <span onClick={handleClick}>{sectionHeader || '{Default Header}'}</span>
       {selected && <div>{lessons}</div>}
     </SectionWrapper>
   )
 }
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.li`
+  list-style-type: none;
+  overflow: hidden;
   padding: 0.5rem 1rem;
+  white-space: nowrap;
 `
 
 export default Section
