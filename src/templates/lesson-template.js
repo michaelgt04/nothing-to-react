@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
@@ -9,12 +10,20 @@ const LessonTemplate = props => {
   const lesson = data.markdownRemark.html
 
   return (
-    <div>
-      <h1>Hoi this is template</h1>
+    <ContentWrapper>
       <div dangerouslySetInnerHTML={{ __html: lesson }} />
-    </div>
+    </ContentWrapper>
   )
 }
+
+const ContentWrapper = styled.div`
+  margin: auto;
+  max-width: 500px;
+
+  @media(min-width: 800px) {
+    max-width: 740px;
+  }
+`
 
 export const pageQuery = graphql`
   query LessonByPath($slug: String!) {
