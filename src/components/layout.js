@@ -28,12 +28,16 @@ const Layout = ({ children }) => (
           ]}
         >
           <html lang="en" />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous"
+          />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <LayoutWrapper>
-          <NavbarWrapper>
-            <Navbar />
-          </NavbarWrapper>
+          <Navbar />
           <ContentWrapper>{children}</ContentWrapper>
         </LayoutWrapper>
       </>
@@ -42,16 +46,11 @@ const Layout = ({ children }) => (
 )
 
 const ContentWrapper = styled.div`
-  max-width: 1080px;
-  margin-left: 5rem;
+  width: 100%;
 `
 
 const LayoutWrapper = styled.div`
   display: flex;
-`
-
-const NavbarWrapper = styled.div`
-  width: 250px;
 `
 
 Layout.propTypes = {

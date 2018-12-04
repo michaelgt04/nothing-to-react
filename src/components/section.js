@@ -14,7 +14,11 @@ const Section = props => {
   const lessons = sectionInfo.map(lesson => {
     const frontmatter = lesson.node.frontmatter
 
-    return <Link to={`/${frontmatter.slug}`}>{frontmatter.title}</Link>
+    return (
+      <Link key={frontmatter.slug} to={`/${frontmatter.slug}`}>
+        {frontmatter.title}
+      </Link>
+    )
   })
 
   return (
@@ -25,8 +29,11 @@ const Section = props => {
   )
 }
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.li`
+  list-style-type: none;
+  overflow: hidden;
   padding: 0.5rem 1rem;
+  white-space: nowrap;
 `
 
 export default Section
