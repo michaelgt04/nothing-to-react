@@ -14,7 +14,11 @@ const Section = props => {
   const lessons = sectionInfo.map(lesson => {
     const frontmatter = lesson.node.frontmatter
 
-    return <Link to={`/${frontmatter.slug}`}>{frontmatter.title}</Link>
+    return (
+      <Link key={frontmatter.slug} to={`/${frontmatter.slug}`}>
+        {frontmatter.title}
+      </Link>
+    )
   })
 
   return (

@@ -57,7 +57,11 @@ class Navbar extends Component {
           query={query}
           render={data => {
             if (collapsed) {
-              return <CollapsedState />
+              return (
+                <CollapsedState>
+                  <i className="fas fa-book-open" />
+                </CollapsedState>
+              )
             }
 
             const pages =
@@ -86,13 +90,19 @@ class Navbar extends Component {
             })
 
             return (
-              <CSSTransition timeout={0} key={1} appear={true} classNames="nav" in>
+              <CSSTransition
+                timeout={0}
+                key={1}
+                appear={true}
+                classNames="nav"
+                in
+              >
                 <NavWrapper key={1}>{sections}</NavWrapper>
               </CSSTransition>
             )
           }}
         />
-    </div>
+      </div>
     )
   }
 }
@@ -102,6 +112,9 @@ const CollapsedState = styled.div`
   background-color: rgba(59, 69, 78, 0.05);
   border-right: 1px solid rgb(230, 236, 241);
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const NavWrapper = styled.nav`
@@ -109,14 +122,12 @@ const NavWrapper = styled.nav`
   border-right: 1px solid rgb(230, 236, 241);
   height: 100vh;
   padding: 1.5rem 2rem;
-
-  &.nav-appear {
-    width: 50px;
-  };
+  width: 50px;
 
   &.nav-enter-done {
+    margin-right: 3rem;
+    transition: width 0.25s ease;
     width: 250px;
-    transition: width .25s ease;
   }
 `
 

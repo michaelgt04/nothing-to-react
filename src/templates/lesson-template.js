@@ -18,9 +18,17 @@ const LessonTemplate = props => {
 
 const ContentWrapper = styled.div`
   margin: auto;
-  max-width: 500px;
+  max-width: 215px;
+
+  @media (min-width: 500px) {
+    max-width: 450px;
+  }
 
   @media (min-width: 800px) {
+    max-width: 600px;
+  }
+
+  @media (min-width: 950px) {
     max-width: 740px;
   }
 `
