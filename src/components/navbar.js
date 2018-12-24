@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
-import stickybits from 'stickybits'
 import Section from './section'
 
 class Navbar extends Component {
@@ -12,10 +11,6 @@ class Navbar extends Component {
       selectedSection: null,
       collapsed: true,
     }
-  }
-
-  componentDidMount = () => {
-    stickybits('#nav-bar')
   }
 
   selectSection = sectionIndex => {
@@ -48,8 +43,7 @@ class Navbar extends Component {
     const { collapsed, selectedSection } = this.state
 
     return (
-      <div
-        id="nav-bar"
+      <NavContainer
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
@@ -102,32 +96,41 @@ class Navbar extends Component {
             )
           }}
         />
-      </div>
+      </NavContainer>
     )
   }
 }
 
+const NavContainer = styled.div`
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+`;
+
 const CollapsedState = styled.div`
-  width: 50px;
-  background-color: rgba(59, 69, 78, 0.05);
+  height: 50px;
+  background-color: #FFFFF3;
   border-right: 1px solid rgb(230, 236, 241);
-  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 const NavWrapper = styled.nav`
-  background-color: rgba(59, 69, 78, 0.05);
+  background-color: #FFFFF3;
   border-right: 1px solid rgb(230, 236, 241);
-  height: 100vh;
+  height: 50px;
   padding: 1.5rem 2rem;
-  width: 50px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
 
   &.nav-enter-done {
-    margin-right: 3rem;
-    transition: width 0.25s ease;
-    width: 250px;
+    transition: height 0.25s ease;
+    height: 250px;
   }
 `
 

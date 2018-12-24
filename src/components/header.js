@@ -4,19 +4,16 @@ import styled from 'styled-components'
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <ContentWrapper>
-      <h3 className="site-title">{siteTitle}</h3>
     </ContentWrapper>
   </HeaderWrapper>
 )
 
 const HeaderWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  height: 80px;
   width: 100%;
-  border-bottom: 1px solid #d4dadf;
-  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
-
-  .site-title {
-    margin: 0;
-  }
+  background: linear-gradient(180deg, #FFFFF3 0%, #FFFFF3 16%, rgba(255, 255, 243, 0.85) 35.57%, rgba(255, 255, 243, 0.83) 54%, rgba(255, 255, 243, 0) 100%);
 `
 
 const ContentWrapper = styled.div`
