@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
@@ -23,20 +23,10 @@ class Navbar extends Component {
     }
   }
 
-  handleMouseEnter = () => {
+  handleMouseClick = () => {
     const { collapsed } = this.state
 
-    if (collapsed) {
-      this.setState({ collapsed: false })
-    }
-  }
-
-  handleMouseLeave = () => {
-    const { collapsed } = this.state
-
-    if (!collapsed) {
-      this.setState({ collapsed: true })
-    }
+    this.setState({ collapsed: !collapsed })
   }
 
   render() {
@@ -44,20 +34,10 @@ class Navbar extends Component {
 
     return (
       <NavContainer
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
       >
         <StaticQuery
           query={query}
           render={data => {
-            if (collapsed) {
-              return (
-                <CollapsedState>
-                  <i className="fas fa-book-open" />
-                </CollapsedState>
-              )
-            }
-
             const pages =
               data && data.allMarkdownRemark && data.allMarkdownRemark.edges
             const pageObject = {}
@@ -84,15 +64,20 @@ class Navbar extends Component {
             })
 
             return (
-              <CSSTransition
-                timeout={0}
-                key={1}
-                appear={true}
-                classNames="nav"
-                in
-              >
-                <NavWrapper key={1}>{sections}</NavWrapper>
-              </CSSTransition>
+                <Fragment>
+                  <CollapsedState onClick={this.handleMouseClick}>
+                    <i className="fas fa-book-open" />
+                  </CollapsedState>
+                  <CSSTransition
+                    timeout={0}
+                    key={1}
+                    appear={true}
+                    classNames="nav"
+                    in={!collapsed}
+                    onExit={() => console.log('what')}
+                  ><NavWrapper key={1}>{sections}</NavWrapper>
+                  </CSSTransition>
+                </Fragment>
             )
           }}
         />
@@ -102,35 +87,77 @@ class Navbar extends Component {
 }
 
 const NavContainer = styled.div`
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-`;
-
-const CollapsedState = styled.div`
-  height: 50px;
-  background-color: #FFFFF3;
-  border-right: 1px solid rgb(230, 236, 241);
-  width: 100vw;
+  width: 100%;
   position: fixed;
   bottom: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 `
 
+const CollapsedState = styled.div`
+  position: relative;
+  bottom: 10px;
+  left: calc(50% - 50px);
+  height: 60px;
+  background-color: #f7ce3e;
+  border-radius: 50%;
+  color: #1A2930;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  cursor: pointer;
+  
+  i {
+    padding-top: 19px;
+  }
+`
+
 const NavWrapper = styled.nav`
-  background-color: #FFFFF3;
-  border-right: 1px solid rgb(230, 236, 241);
-  height: 50px;
-  padding: 1.5rem 2rem;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
+  z-index: 1;
+  background-color: #ffffff;
+  height: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &.nav-enter {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid #f7ce3e;
+  }
+
+  &.nav-enter-active {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid #f7ce3e;
+  }
 
   &.nav-enter-done {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid #f7ce3e;
     transition: height 0.25s ease;
-    height: 250px;
+    height: 150px;
+  }
+
+  &.nav-exit {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid #f7ce3e;
+    transition: height 0.25s ease;
+    height: 0px;
+  }
+
+  &.nav-exit-active {
+    padding: 1.5rem 2rem;
+    border-top: 3px solid #f7ce3e;
+    transition: height 0.25s ease;
+    height: 0px;
+  }
+
+  &.nav-exit-done {
+    border-top: 0px;
+    padding: 0px;
+    transition: height 0.25s ease;
+    height: 0px;
   }
 `
 

@@ -23,17 +23,15 @@ const Section = props => {
 
   return (
     <SectionWrapper>
-      <span onClick={handleClick}>{sectionHeader || '{Default Header}'}</span>
+      <span onClick={handleClick}>{sectionHeader && false || '{Default Header}'}</span>
       {selected && <div>{lessons}</div>}
     </SectionWrapper>
   )
 }
 
-const SectionWrapper = styled.li`
-  list-style-type: none;
-  overflow: hidden;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
+const SectionWrapper = styled.div`
+  display: flex;
+  juti
 `
 
 export default Section

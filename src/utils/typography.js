@@ -2,21 +2,28 @@ import Typography from 'typography'
 import oceanBeachTheme from 'typography-theme-ocean-beach'
 oceanBeachTheme.googleFonts = [
   {
-    name: 'Archivo Narrow',
+    name: 'Open Sans',
     styles: [600],
   },
   {
-    name: 'Roboto',
-    styles: [400],
+    name: 'Raleway',
+    styles: [300],
   },
 ]
 
-oceanBeachTheme.headerFontFamily = ['Archivo Narrow']
-oceanBeachTheme.bodyFontFamily = ['Roboto']
+oceanBeachTheme.headerFontFamily = ['Open Sans']
+oceanBeachTheme.bodyFontFamily = ['Raleway']
 
 oceanBeachTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   body: {
     color: 'rgba(0, 0, 0, .80)',
+    maxWidth: '1400px',
+    margin: 'auto'
+  },
+  'h1,h2,h3': {
+    borderBottom: '3px solid #FEA680',
+    display: 'inline-block',
+    paddingBottom: '14px',
   },
   'h1,h2,h3,h4,h5': {
     margin: '1.5rem 0',
@@ -24,7 +31,7 @@ oceanBeachTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   },
   p: {
     lineHeight: '1.82em',
-    fontSize: '18px',
+    fontSize: '20px',
   },
 })
 
