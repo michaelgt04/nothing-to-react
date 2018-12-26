@@ -37,8 +37,8 @@ const Layout = ({ children }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <LayoutWrapper>
-          <Navbar />
           <ContentWrapper>{children}</ContentWrapper>
+          <Navbar />
         </LayoutWrapper>
       </>
     )}
@@ -46,6 +46,7 @@ const Layout = ({ children }) => (
 )
 
 const ContentWrapper = styled.div`
+  padding: 40px 0;
   width: 100%;
 `
 
